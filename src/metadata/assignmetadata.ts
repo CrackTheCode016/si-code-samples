@@ -1,4 +1,12 @@
-import { Account, AccountMetadataTransaction, AggregateTransaction, Deadline, KeyGenerator, NetworkType, UInt64 } from "symbol-sdk";
+import {
+  Account,
+  AccountMetadataTransaction,
+  AggregateTransaction,
+  Deadline,
+  KeyGenerator,
+  NetworkType,
+  UInt64,
+} from "symbol-sdk";
 import { CreateAccount } from "../account/createaccount";
 import { ExampleBase } from "../base/base";
 
@@ -7,16 +15,22 @@ export class CreateMetadata extends ExampleBase {
     readonly account: Account,
     readonly genHash: string,
     readonly ip: string,
+    readonly epoch: number = 0,
     readonly networkType: NetworkType = NetworkType.TEST_NET
   ) {
-    super(account, genHash, ip);
+    super(
+      account,
+      genHash,
+      ip,
+      epoch,
+      "Account Metadata Assignment. This transaction assigns metadata with the consent of the other account signing the transaction."
+    );
   }
 
   create(epoch: number = 0): AggregateTransaction {
     const aliceAccount = CreateAccount.create();
     const value = "123456";
-    const key = KeyGenerator.generateUInt64Key('CERT');
-
+    const key = KeyGenerator.generateUInt64Key("CERT");
 
     const accountMetadataTransaction = AccountMetadataTransaction.create(
       Deadline.create(epoch),

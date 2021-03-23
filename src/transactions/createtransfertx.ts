@@ -14,9 +14,10 @@ export class CreateTransferTransaction extends ExampleBase {
     readonly account: Account,
     readonly genHash: string,
     readonly ip: string,
+    readonly epoch: number = 0,
     readonly networkType: NetworkType = NetworkType.TEST_NET
   ) {
-    super(account, genHash, ip);
+    super(account, genHash, ip, epoch, "");
   }
 
   create(epoch: number = 0): TransferTransaction {

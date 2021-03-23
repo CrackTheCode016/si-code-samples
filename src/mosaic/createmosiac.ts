@@ -18,9 +18,16 @@ export class CreateMosaic extends ExampleBase {
     readonly account: Account,
     readonly genHash: string,
     readonly ip: string,
+    readonly epoch: number = 0,
     readonly networkType: NetworkType = NetworkType.TEST_NET
   ) {
-    super(account, genHash, ip);
+    super(
+      account,
+      genHash,
+      ip,
+      epoch,
+      "This transactions defines the creation of a mosaic, as well as its inital supply and properties."
+    );
   }
 
   create(epoch: number = 0): AggregateTransaction {

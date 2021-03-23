@@ -4,9 +4,7 @@
   "description": "SI and Symbol code samples",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "",
-    "start": ""
+    "start": "ts-node src/run.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +12,8 @@
     "rxjs": "^6.6.6",
     "symbol-sdk": "^1.0.0",
     "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1"
   }
 }

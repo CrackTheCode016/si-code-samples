@@ -12,7 +12,8 @@ export abstract class ExampleBase {
     readonly account: Account,
     readonly genHash: string = "",
     readonly ip: string = "http://localhost:3000",
-    readonly epoch: number = 0
+    readonly epoch: number = 0,
+    readonly message: string
   ) {}
 
   abstract create(epoch: number): Transaction;
@@ -22,6 +23,7 @@ export abstract class ExampleBase {
   }
 
   display(): void {
+    console.log(this.message);
     console.log(this.create(this.epoch).toJSON());
   }
 

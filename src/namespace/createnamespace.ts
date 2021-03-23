@@ -12,9 +12,16 @@ export class CreateNamespace extends ExampleBase {
     readonly account: Account,
     readonly genHash: string,
     readonly ip: string,
+    readonly epoch: number = 0,
     readonly networkType: NetworkType = NetworkType.TEST_NET
   ) {
-    super(account, genHash, ip);
+    super(
+      account,
+      genHash,
+      ip,
+      epoch,
+      "This creates a namespace on chain with the id `foo`"
+    );
   }
 
   create(epoch: number = 0): NamespaceRegistrationTransaction {
