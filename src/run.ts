@@ -17,7 +17,6 @@ const transferTransaction = new CreateTransferTransaction(
 const namespace = new CreateNamespace(primaryAccount, genHash, ip);
 const metadata = new CreateMetadata(primaryAccount, genHash, ip);
 const mosaic = new CreateMosaic(primaryAccount, genHash, ip);
-const websockets = new WebSocketExample(ip);
 
 transferTransaction.display();
 namespace.display();
