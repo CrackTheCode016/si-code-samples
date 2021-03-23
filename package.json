@@ -1,0 +1,18 @@
+{
+  "name": "si-code-samples",
+  "version": "1.0.0",
+  "description": "SI and Symbol code samples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "",
+    "start": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.6.6",
+    "symbol-sdk": "^1.0.0",
+    "utf8": "^3.0.0"
+  }
+}
