@@ -9,6 +9,7 @@ import {
 } from "symbol-sdk";
 import { CreateAccount } from "../account/createaccount";
 import { ExampleBase } from "../base/base";
+import { defaultFee, epoch } from "../constants";
 
 export class CreateMetadata extends ExampleBase {
   constructor(
@@ -27,14 +28,13 @@ export class CreateMetadata extends ExampleBase {
     );
   }
 
-  create(epoch: number = 0): AggregateTransaction {
-    const aliceAccount = CreateAccount.create();
+  create(): AggregateTransaction {
     const value = "123456";
     const key = KeyGenerator.generateUInt64Key("CERT");
 
     const accountMetadataTransaction = AccountMetadataTransaction.create(
       Deadline.create(epoch),
-      aliceAccount.address,
+      this.account.address,
       key,
       value.length,
       value,
@@ -43,10 +43,10 @@ export class CreateMetadata extends ExampleBase {
 
     return AggregateTransaction.createComplete(
       Deadline.create(epoch),
-      [accountMetadataTransaction.toAggregate(aliceAccount.publicAccount)],
+      [accountMetadataTransaction.toAggregate(this.account.publicAccount)],
       this.networkType,
       [],
-      UInt64.fromUint(2000000)
+      UInt64.fromUint(defaultFee)
     );
   }
 }

@@ -6,6 +6,7 @@ import {
   UInt64,
 } from "symbol-sdk";
 import { ExampleBase } from "../base/base";
+import { defaultFee, epoch } from "../constants";
 
 export class CreateNamespace extends ExampleBase {
   constructor(
@@ -24,15 +25,21 @@ export class CreateNamespace extends ExampleBase {
     );
   }
 
-  create(epoch: number = 0): NamespaceRegistrationTransaction {
+  private calculateNamespaceRentalDuration(numberOfDays: number): number {
+    // duration ≈ numberOfDays ∗ 86400/blockGenerationTargetTimeInSeconds
+    // Both the testnet and mainnet have this target blocktime at 15 seconds
+    return numberOfDays * (86400 / 15);
+  }
+
+  create(): NamespaceRegistrationTransaction {
     const namespaceName = "foo";
-    const duration = UInt64.fromUint(172800);
+    const duration = UInt64.fromUint(this.calculateNamespaceRentalDuration(30));
     return NamespaceRegistrationTransaction.createRootNamespace(
       Deadline.create(epoch),
       namespaceName,
       duration,
       this.networkType,
-      UInt64.fromUint(2000000)
+      UInt64.fromUint(defaultFee)
     );
   }
 }

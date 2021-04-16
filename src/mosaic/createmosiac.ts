@@ -12,6 +12,7 @@ import {
   UInt64,
 } from "symbol-sdk";
 import { ExampleBase } from "../base/base";
+import { defaultFee, epoch } from "../constants";
 
 export class CreateMosaic extends ExampleBase {
   constructor(
@@ -30,7 +31,7 @@ export class CreateMosaic extends ExampleBase {
     );
   }
 
-  create(epoch: number = 0): AggregateTransaction {
+  create(): AggregateTransaction {
     const duration = UInt64.fromUint(0);
     const isSupplyMutable = true;
     const isTransferable = true;
@@ -66,7 +67,7 @@ export class CreateMosaic extends ExampleBase {
       ],
       this.networkType,
       [],
-      UInt64.fromUint(2000000)
+      UInt64.fromUint(defaultFee)
     );
   }
 }
