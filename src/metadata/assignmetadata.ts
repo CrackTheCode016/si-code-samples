@@ -29,7 +29,7 @@ export class CreateMetadata extends ExampleBase {
   }
 
   create(): AggregateTransaction {
-    const value = "123456";
+    const value = "Hello!";
     const key = KeyGenerator.generateUInt64Key("CERT");
 
     const accountMetadataTransaction = AccountMetadataTransaction.create(

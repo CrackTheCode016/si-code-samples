@@ -35,6 +35,8 @@ export class CreateTransferTransaction extends ExampleBase {
   create(amount?: number, recipent?: Address): TransferTransaction {
     const randomRecipient =
       recipent !== undefined ? recipent : CreateAccount.create().address;
+
+    console.log(randomRecipient.plain());
     return TransferTransaction.create(
       Deadline.create(epoch),
       randomRecipient,
