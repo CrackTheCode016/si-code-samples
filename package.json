@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clime": "^0.5.14",
     "rxjs": "^6.6.6",
     "symbol-sdk": "^1.0.0",
     "utf8": "^3.0.0"

@@ -7,7 +7,6 @@ import {
   NetworkType,
   UInt64,
 } from "symbol-sdk";
-import { CreateAccount } from "../account/createaccount";
 import { ExampleBase } from "../base/base";
 import { defaultFee, epoch } from "../constants";
 
@@ -30,8 +29,10 @@ export class CreateMetadata extends ExampleBase {
 
   create(): AggregateTransaction {
     const value = "Hello!";
-    const key = KeyGenerator.generateUInt64Key("CERT");
+    const randomHexValue = Math.floor(Math.random() * 99999);
+    const key = KeyGenerator.generateUInt64Key(`CERT-${randomHexValue}`);
 
+    console.log(key);
     const accountMetadataTransaction = AccountMetadataTransaction.create(
       Deadline.create(epoch),
       this.account.address,

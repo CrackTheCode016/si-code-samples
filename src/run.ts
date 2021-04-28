@@ -27,6 +27,8 @@ const mosaic = new CreateMosaic(primaryAccount, genHash, testNetNodeUrl);
 // mosaic.run().subscribe((r) => console.log(r));
 // namespace.run().subscribe((r) => console.log(r));
 
+metadata.create();
+
 console.log(
   "And now... here we're watching new blocks being added to the Symbol Testnet! How cool is that?"
 );
